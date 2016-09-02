@@ -48,20 +48,27 @@ html {
 			color: white;
 			text-shadow: 2px 2px #000;
 			text-align: center;
-			font-size: 30px;
+			font-size: 36px;
 			font-weight: bold;
 			font-style: italic;
 		}
 
-		#shortcut-list {
+		#shortcut-list, #new-shortcut-list {
 			margin-top: 1%;
-			margin-left: 3%;
 			margin-bottom: 0%;
 			li {
 				list-style: none;
 				display: inline;
 				margin: 1%;
+				button {
+					margin: 1px;
+				}
 				a{
+					color: white;
+					text-shadow: 3px 3px #777;
+					text-decoration: none;
+					font-size: 30px;
+					font-weight: bold;
 					img {
 						width: 40px;
 						heigth: 20px;

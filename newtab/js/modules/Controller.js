@@ -77,7 +77,10 @@ export default class Controller extends React.Component {
 	}
 
 	defaultBtn() {
-		chrome.storage.sync.clear();
+
+		let toRemove = ["bg-color", "txt-color", "bg-img", "text-size", "text-style", "memo"];
+
+		chrome.storage.sync.remove(toRemove);
 		chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
 			chrome.tabs.sendMessage(tabs[0].id, {"clear": true});
 		});	

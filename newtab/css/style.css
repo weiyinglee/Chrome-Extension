@@ -30,21 +30,28 @@ html body {
     color: white;
     text-shadow: 2px 2px #000;
     text-align: center;
-    font-size: 30px;
+    font-size: 36px;
     font-weight: bold;
     font-style: italic; }
-  html body #shortcut-list {
+  html body #shortcut-list, html body #new-shortcut-list {
     margin-top: 1%;
-    margin-left: 3%;
     margin-bottom: 0%; }
-    html body #shortcut-list li {
+    html body #shortcut-list li, html body #new-shortcut-list li {
       list-style: none;
       display: inline;
       margin: 1%; }
-      html body #shortcut-list li a img {
-        width: 40px;
-        heigth: 20px;
-        padding: 0%;
-        background: transparent; }
+      html body #shortcut-list li button, html body #new-shortcut-list li button {
+        margin: 1px; }
+      html body #shortcut-list li a, html body #new-shortcut-list li a {
+        color: white;
+        text-shadow: 3px 3px #777;
+        text-decoration: none;
+        font-size: 30px;
+        font-weight: bold; }
+        html body #shortcut-list li a img, html body #new-shortcut-list li a img {
+          width: 40px;
+          heigth: 20px;
+          padding: 0%;
+          background: transparent; }
 
 /*# sourceMappingURL=style.css.map */

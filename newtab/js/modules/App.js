@@ -24,7 +24,7 @@ export default class App extends React.Component {
 					break;
 				
 				case "bg-img":
-					let traparency = "linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1))";
+					let traparency = "linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2))";
 					let url = "url('../img/image" + req["bg-img"] + ".jpg')";
 					$("body").css({"background-image": traparency + ", " + url});					
 					break;
@@ -77,7 +77,7 @@ export default class App extends React.Component {
 						break;
 					
 					case "bg-img":
-						let traparency = "linear-gradient(rgba(0, 0, 0, 0.1),rgba(0, 0, 0, 0.1))";
+						let traparency = "linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.2))";
 						let url = "url('../img/image" + data["bg-img"] + ".jpg')";
 						$("body").css({"background-image": traparency + ", " + url});							
 						break;

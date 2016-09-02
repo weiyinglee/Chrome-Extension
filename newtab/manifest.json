@@ -1,0 +1,31 @@
+{
+  "manifest_version": 2,
+
+  "name": "Custome New Tab",
+  "description": "This extension makes a custome new tab",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "control.html",
+    "default_title": "New Tab Controller!"
+  },
+  "content_scripts":[
+    {
+      "matches": ["<all_urls>"],
+      "all_frames": true,
+      "js": ["js/modules/App.js"]
+    }
+  ],
+  "permissions": [
+    "activeTab",
+    "http://www.google.com/",
+    "https://www.google.com/",
+    "storage",
+    "tabs"
+  ],
+
+  "chrome_url_overrides" : {
+    "newtab": "popup.html"
+  }
+}

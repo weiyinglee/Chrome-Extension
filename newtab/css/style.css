@@ -1,0 +1,50 @@
+html body {
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: top;
+  -webkit-background-size: 100%; }
+  html body .unselectableText {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none; }
+  html body #search-block {
+    margin-top: 1%; }
+    html body #search-block #input-bar {
+      background: rgba(255, 255, 255, 0.8);
+      border: 0; }
+  html body .top-frame {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    padding: 2%; }
+  html body #memo-txt {
+    width: auto;
+    border: none;
+    background: transparent;
+    padding: 2%;
+    margin: 1%;
+    margin-top: 10%;
+    color: white;
+    text-shadow: 2px 2px #000;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    font-style: italic; }
+  html body #shortcut-list {
+    margin-top: 1%;
+    margin-left: 3%;
+    margin-bottom: 0%; }
+    html body #shortcut-list li {
+      list-style: none;
+      display: inline;
+      margin: 1%; }
+      html body #shortcut-list li a img {
+        width: 40px;
+        heigth: 20px;
+        padding: 0%;
+        background: transparent; }
+
+/*# sourceMappingURL=style.css.map */

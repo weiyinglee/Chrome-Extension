@@ -1,0 +1,63 @@
+$screen-width: 400px;
+$screen-height: 200px;
+$font-weight: bold;
+$btn-margin: 1%;
+
+body {
+	width: $screen-width;
+	height: $screen-height;
+	background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../img/control-bg.jpg") no-repeat fixed top;
+
+	.unselectableText { 
+		-webkit-user-select: none; 
+		-khtml-user-select: none; 
+		-moz-user-select: none; 
+		-o-user-select: none; 
+		user-select: none; 
+	}
+	
+	ul {
+		li {
+			list-style: none;
+			margin: 3%;
+			input {
+				margin-left: 1%;
+			}
+			button {
+				margin: $btn-margin;
+			}
+			textarea {
+				width: 100%;
+				resize: none;
+			}
+		}
+	}
+
+	.title{
+		color: white;
+		text-shadow: 2px 2px #333;
+		text-align: center;
+		font-style: italic;
+		font-weight: $font-weight;
+	}
+
+	.function-btn {
+		margin-bottom: 3%;
+		margin-left: 1%;
+	}
+
+	.shortcut-input {
+		margin: $btn-margin;
+	}
+
+	.shortcut-btn {
+		margin: $btn-margin;
+		margin-left: 85%;
+	}
+
+	.shortcut-items a {
+		color: white;
+		font-weight: $font-weight;
+	}
+
+}

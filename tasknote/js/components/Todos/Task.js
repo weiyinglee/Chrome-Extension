@@ -53,6 +53,18 @@ export default class Task extends React.Component {
 		taskAction.switchNotify(id);
 	}
 
+	setReminder() {
+
+		let id = this.props.index;
+		let time = this.refs.min.value;
+
+		if(time != ""){
+			//set the time
+			taskAction.setReminder(time, id);			
+		}
+	}
+
+
 	render() {
 
 		//the html when editng mode is on
@@ -74,6 +86,22 @@ export default class Task extends React.Component {
 			)
 		}else {
 			let notifition;
+
+			if(this.props.notify) {
+				//if have not set time
+				if(!this.props.setTime) {
+					notifition = (
+						<div>
+							<span className="notifition-time">Set the reminder in </span>
+							<input type="number" ref="min" min="0" placeholder="minutes"/>
+							<span className="notifition-time">minutes</span>
+							<Button bsSize="xsmall" onClick={this.setReminder.bind(this)}>Set</Button>
+						</div>
+					)
+				}else {
+					notifition = (<h6 className="notifition-time">Reminder in {this.props.time} minutes.</h6>)
+				}
+			}
 			
 			editingMode = (		
 				<Row>	

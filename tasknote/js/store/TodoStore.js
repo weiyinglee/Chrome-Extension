@@ -31,7 +31,9 @@ class TodoStore extends EventEmitter {
 	createNewTask() {
 		this.tasks.push({
 			text: "New Task",
-			notify: false
+			notify: false,
+			setTime: false,
+			time: 0
 		});
 		chrome.storage.sync.set({"tasks": this.tasks})
 		this.emit("change");
@@ -54,8 +56,33 @@ class TodoStore extends EventEmitter {
 	//turn on notify
 	switchNotify(id) {
 		this.tasks[id].notify = !this.tasks[id].notify;
+		if(!this.tasks[id].notify){
+			this.tasks[id].setTime = false;
+			chrome.alarms.clear();
+		}
 		chrome.storage.sync.set({"tasks": this.tasks});
 		this.emit("change");
+	}
+
+	//set the time
+	setReminder(time, id) {
+		
+		let tasks = this.tasks;
+
+		//the time is set, change the state
+		this.tasks[id].setTime = true;
+		//set the time
+		this.tasks[id].time = time;
+
+		chrome.storage.sync.set({"tasks": this.tasks});
+		this.emit("change");
+
+		//set the alarm
+		chrome.alarms.create("Reminder", {
+			delayInMinutes: 0.2,
+			periodInMinutes: 0.2,
+		});
+
 	}
 
 	handleAction(action) {
@@ -74,6 +101,9 @@ class TodoStore extends EventEmitter {
 				break;
 			case "SWITCH_NOTIFY":
 				this.switchNotify(action.id);
+				break;
+			case "SET_REMINDER":
+				this.setReminder(action.time, action.id);
 				break;
 		}
 	}

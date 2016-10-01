@@ -41,3 +41,12 @@ export function switchNotify(id) {
 		id
 	})
 }
+
+//set reminder
+export function setReminder(time, id) {
+	dispatcher.dispatch({
+		type: "SET_REMINDER",
+		time,
+		id
+	})
+}

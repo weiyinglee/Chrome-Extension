@@ -58,7 +58,8 @@ class TodoStore extends EventEmitter {
 		this.tasks[id].notify = !this.tasks[id].notify;
 		if(!this.tasks[id].notify){
 			this.tasks[id].setTime = false;
-			chrome.alarms.clear();
+			//turn off the alarm if the notify is off
+			chrome.alarms.clear(this.tasks[id].text);
 		}
 		chrome.storage.sync.set({"tasks": this.tasks});
 		this.emit("change");
@@ -78,9 +79,9 @@ class TodoStore extends EventEmitter {
 		this.emit("change");
 
 		//set the alarm
-		chrome.alarms.create("Reminder", {
-			delayInMinutes: 0.2,
-			periodInMinutes: 0.2,
+		chrome.alarms.create(tasks[id].text, {
+			delayInMinutes: parseFloat(time),
+			periodInMinutes: parseFloat(time)
 		});
 
 	}

@@ -99,8 +99,10 @@ export default class Task extends React.Component {
 						</div>
 					)
 				}else {
-					notifition = (<h6 className="notifition-time">Reminder in {this.props.time} minutes.</h6>)
+					notifition = (<h6 className="notifition-time">Reminder is ON, happens in {this.props.time} minutes.</h6>)
 				}
+			}else {
+				notifition = (<h6 className="notifition-time">Reminder is OFF</h6>)
 			}
 			
 			editingMode = (		

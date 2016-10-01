@@ -25,6 +25,10 @@ export default class Task extends React.Component {
 
 	delTask() {
 
+		let id = this.props.index;
+
+		//send the action to delete the text with id
+		taskAction.delTask(id);
 	}
 
 	updateText() {

@@ -44,6 +44,13 @@ class TodoStore extends EventEmitter {
 		this.emit("change");
 	}
 
+	//delete a task with certain id
+	delTask(id) {
+		this.tasks.splice(id, 1);
+		chrome.storage.sync.set({"tasks": this.tasks});
+		this.emit("change");
+	}
+
 	handleAction(action) {
 		switch(action.type) {
 			case "CREATE_NEW_TASK":
@@ -54,6 +61,9 @@ class TodoStore extends EventEmitter {
 				break;
 			case "UPDATE_TASK":
 				this.updateTask(action.text, action.id);
+				break;
+			case "DEL_TASK":
+				this.delTask(action.id);
 				break;
 		}
 	}

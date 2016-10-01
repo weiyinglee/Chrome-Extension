@@ -58,7 +58,9 @@ export default class Task extends React.Component {
 						<input type="text" ref="new_text" defaultValue={this.props.text} placeholder="What is the task?"/>
 					</Col>
 					<Col xs={4}>
-						<Button bsSize="xsmall" bsStyle="link" onClick={this.updateText.bind(this)}>done</Button>
+						<a href="#" title="Done" className="btn" onClick={this.updateText.bind(this)}>
+							<span className="glyphicon glyphicon-ok" aria-hidden="true"></span>
+						</a>
 					</Col>
 				</Row>
 			)
@@ -69,8 +71,15 @@ export default class Task extends React.Component {
 						{this.props.text}
 					</Col>
 					<Col xs={4}>
-						<Button bsSize="xsmall" onClick={this.editTask.bind(this)}>Edit</Button>
-						<Button bsSize="xsmall" onClick={this.delTask.bind(this)}>Delete</Button>
+						<a href="#" title="Edit" className="btn" onClick={this.editTask.bind(this)}>
+							<span className="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+						</a>
+						<a href="#" title="Set reminder" className="btn">
+							<span className="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+						</a>						
+						<a href="#" title="Delete" className="btn" onClick={this.delTask.bind(this)}>
+							<span className="glyphicon glyphicon-remove" aria-hidden="true"></span>
+						</a>
 					</Col>
 				</Row>
 			)

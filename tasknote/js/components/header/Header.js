@@ -22,7 +22,9 @@ export default class Header extends React.Component {
 						<span id="header-title">TO DO LIST</span>
 					</Col>
 					<Col xs={2}>
-						<Button bsSize="xsmall" onClick={this.addNewTask.bind(this)}>ADD</Button>
+						<Button bsSize="xsmall" onClick={this.addNewTask.bind(this)}>
+							<span className="glyphicon glyphicon-plus" aria-hidden="true"></span>
+						</Button>
 					</Col>
 				</Row>
 			</Grid>

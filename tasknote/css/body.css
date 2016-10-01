@@ -1,5 +1,18 @@
 body {
-  width: 400px;
-  height: 200px; }
+  width: 475px;
+  height: 200px;
+  font-family: cursive;
+  background: #ffffa5; }
+  body .unselectableText {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none; }
+  body a {
+    color: brown;
+    text-decoration: none; }
+    body a a:visit a:hover {
+      color: brown; }
 
 /*# sourceMappingURL=body.css.map */

@@ -22,18 +22,22 @@ export default class TaskContainer extends React.Component {
 		this.setState({tasks: toDoStore.getTask()});
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		taskAction.fetchTasks();
 		toDoStore.on("change", this.getTasks.bind(this));
 	}
 
-	componentWillUnMount() {
-		toDoStore.removeListener("change", this.getTasks.bind(this));
-	}
-
 	render() {
+
+		let taskList;
+
+		if(this.state.tasks.length == 0) {
+			taskList = (<div id="no-task-text">No task for today</div>)
+		}
+
 		return (
 			<div>
+				{taskList}
 				{
 					this.state.tasks.map((task, index) => {
 						return (<Task text={task.text} key={index} index={index}/>)

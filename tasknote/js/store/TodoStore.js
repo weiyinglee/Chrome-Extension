@@ -27,11 +27,19 @@ class TodoStore extends EventEmitter {
 		});
 	}
 
+	//create the default task
 	createNewTask() {
 		this.tasks.push({
 			text: "New Task",
 			complete: false
 		});
+		chrome.storage.sync.set({"tasks": this.tasks})
+		this.emit("change");
+	}
+
+	//update the text of task with certain id
+	updateTask(text, id) {
+		this.tasks[id].text = text;
 		chrome.storage.sync.set({"tasks": this.tasks})
 		this.emit("change");
 	}
@@ -43,6 +51,9 @@ class TodoStore extends EventEmitter {
 				break;
 			case "FETCH_TASKS":
 				this.fetchTasks();
+				break;
+			case "UPDATE_TASK":
+				this.updateTask(action.text, action.id);
 				break;
 		}
 	}

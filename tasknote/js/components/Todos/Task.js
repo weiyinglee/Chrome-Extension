@@ -6,6 +6,7 @@ import React from "react";
 import { Grid, Row, Col, Button } from "react-bootstrap";
 
 import * as taskAction from "../../action/TaskAction";
+import todoStore from "../../store/TodoStore";
 
 export default class Task extends React.Component {
 
@@ -64,11 +65,24 @@ export default class Task extends React.Component {
 		}
 	}
 
-
 	render() {
 
 		//the html when editng mode is on
 		let editingMode;
+
+		let hour = new Date().getHours();
+		let minute = new Date().getMinutes();
+		let time = minute + parseInt(this.props.time);
+
+		let showTime;
+
+		if(time >= 60) {
+			hour += time/60;
+			minute = time%60;
+			showTime = hour + " : " + minute;
+		}else {
+			showTime = hour + " : " + time;
+		}
 
 		//if the editing mode is on, show editingMode
 		if(this.state.editing) {
@@ -99,7 +113,7 @@ export default class Task extends React.Component {
 						</div>
 					)
 				}else {
-					notifition = (<h6 className="notifition-time">Reminder is ON, happens in {this.props.time} minutes.</h6>)
+					notifition = (<h6 className="notifition-time">Reminder is ON, at {showTime}</h6>)
 				}
 			}else {
 				notifition = (<h6 className="notifition-time">Reminder is OFF</h6>)

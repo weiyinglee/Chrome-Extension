@@ -18,6 +18,17 @@ class TodoStore extends EventEmitter {
 		return this.tasks;
 	}
 
+	getTaskTime(id){
+		return this.tasks[id].time;
+	}
+
+	resetSetting(task, id) {
+		//reset the task setting
+		this.tasks[id].notify = false;
+		this.tasks[id].setTime = false;
+		chrome.alarms.clear(task);
+	}
+
 	fetchTasks() {
 		chrome.storage.sync.get("tasks", (data) => {
 			if(data.tasks){
@@ -41,13 +52,23 @@ class TodoStore extends EventEmitter {
 
 	//update the text of task with certain id
 	updateTask(text, id) {
+
+		let oldTasks = this.tasks[id].text;
+
+		//reset the setting
+		this.resetSetting(oldTasks, id);
+
+		//update the text
 		this.tasks[id].text = text;
-		chrome.storage.sync.set({"tasks": this.tasks})
+		chrome.storage.sync.set({"tasks": this.tasks});
 		this.emit("change");
 	}
 
 	//delete a task with certain id
 	delTask(id) {
+		//reset the task setting
+		this.resetSetting(this.tasks[id].text, id);
+
 		this.tasks.splice(id, 1);
 		chrome.storage.sync.set({"tasks": this.tasks});
 		this.emit("change");
@@ -60,7 +81,7 @@ class TodoStore extends EventEmitter {
 			this.tasks[id].setTime = false;
 			//turn off the alarm if the notify is off
 			chrome.alarms.clear(this.tasks[id].text);
-		}
+		}		
 		chrome.storage.sync.set({"tasks": this.tasks});
 		this.emit("change");
 	}
@@ -69,6 +90,7 @@ class TodoStore extends EventEmitter {
 	setReminder(time, id) {
 		
 		let tasks = this.tasks;
+		let setTime = parseFloat(time);
 
 		//the time is set, change the state
 		this.tasks[id].setTime = true;

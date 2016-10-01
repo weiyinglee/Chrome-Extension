@@ -40,7 +40,7 @@ export default class TaskContainer extends React.Component {
 				{taskList}
 				{
 					this.state.tasks.map((task, index) => {
-						return (<Task text={task.text} key={index} index={index}/>)
+						return (<Task text={task.text} notify={task.notify} key={index} index={index}/>)
 					})
 				}
 			</div>

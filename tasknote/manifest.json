@@ -11,6 +11,7 @@
     "default_title": "To Do List!"
   },
   "permissions": [
-    "storage"
+    "storage",
+    "alarms"
   ]
 }

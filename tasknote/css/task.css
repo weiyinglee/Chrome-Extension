@@ -6,4 +6,8 @@
 .btn {
   font-size: 11px; }
 
+.notifition-time {
+  color: rgba(255, 0, 0, 0.6);
+  font-style: italic; }
+
 /*# sourceMappingURL=task.css.map */

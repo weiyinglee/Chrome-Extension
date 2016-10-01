@@ -33,3 +33,11 @@ export function delTask(id) {
 		id
 	})
 }
+
+//turn on notify
+export function switchNotify(id) {
+	dispatcher.dispatch({
+		type: "SWITCH_NOTIFY",
+		id
+	})
+}

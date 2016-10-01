@@ -31,7 +31,7 @@ class TodoStore extends EventEmitter {
 	createNewTask() {
 		this.tasks.push({
 			text: "New Task",
-			complete: false
+			notify: false
 		});
 		chrome.storage.sync.set({"tasks": this.tasks})
 		this.emit("change");
@@ -51,6 +51,13 @@ class TodoStore extends EventEmitter {
 		this.emit("change");
 	}
 
+	//turn on notify
+	switchNotify(id) {
+		this.tasks[id].notify = !this.tasks[id].notify;
+		chrome.storage.sync.set({"tasks": this.tasks});
+		this.emit("change");
+	}
+
 	handleAction(action) {
 		switch(action.type) {
 			case "CREATE_NEW_TASK":
@@ -64,6 +71,9 @@ class TodoStore extends EventEmitter {
 				break;
 			case "DEL_TASK":
 				this.delTask(action.id);
+				break;
+			case "SWITCH_NOTIFY":
+				this.switchNotify(action.id);
 				break;
 		}
 	}

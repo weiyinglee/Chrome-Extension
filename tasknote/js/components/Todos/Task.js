@@ -45,6 +45,14 @@ export default class Task extends React.Component {
 		})
 	}
 
+	switchNotify() {
+
+		let id = this.props.index;
+
+		//swtich the notify
+		taskAction.switchNotify(id);
+	}
+
 	render() {
 
 		//the html when editng mode is on
@@ -65,16 +73,18 @@ export default class Task extends React.Component {
 				</Row>
 			)
 		}else {
-			editingMode = (			
-				<Row>
+			let notifition;
+			
+			editingMode = (		
+				<Row>	
 					<Col xs={8}>
-						{this.props.text}
+						{this.props.text} {notifition}
 					</Col>
 					<Col xs={4}>
 						<a href="#" title="Edit" className="btn" onClick={this.editTask.bind(this)}>
 							<span className="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 						</a>
-						<a href="#" title="Set reminder" className="btn">
+						<a href="#" title="Set reminder" className="btn" onClick={this.switchNotify.bind(this)}>
 							<span className="glyphicon glyphicon-calendar" aria-hidden="true"></span>
 						</a>						
 						<a href="#" title="Delete" className="btn" onClick={this.delTask.bind(this)}>
@@ -83,7 +93,6 @@ export default class Task extends React.Component {
 					</Col>
 				</Row>
 			)
-
 		}
 
 		return (
